@@ -14,7 +14,7 @@ class TareaController extends Controller
      */
     public function index()
     {
-        return Tarea::all();
+        return Tarea::where('user_id', '=', request()->user()->id)->get();;
     }
 
     /**

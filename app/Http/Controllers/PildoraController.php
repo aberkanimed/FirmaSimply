@@ -14,7 +14,7 @@ class PildoraController extends Controller
      */
     public function index()
     {
-        return Pildora::all();
+        return Pildora::where('user_id', '=', request()->user()->id)->get();
     }
 
     /**

@@ -16,7 +16,7 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        return Asistencia::all();
+        return Asistencia::where('user_id', '=', request()->user()->id)->get();
     }
 
     /**
@@ -33,10 +33,11 @@ class AsistenciaController extends Controller
     /**
      *
      */
-    public function getCountRegistrosAsistenciaHoy($coder_id)
+    public function getCountRegistrosAsistenciaHoy(Request $request)
     {
         try {
-            return User::findOrFail($coder_id)->countRegistrosAsistenciaHoy();
+            $user = $request->user();
+            return $user->countRegistrosAsistenciaHoy();
         } catch (ModelNotFoundException $e) {
             return response(['Error' => 'Coder no existe'], 404);
         }
