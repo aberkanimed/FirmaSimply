@@ -33,10 +33,10 @@ class AsistenciaController extends Controller
     /**
      *
      */
-    public function getCountRegistrosAsistenciaHoy(Request $request)
+    public function getCountRegistrosAsistenciaHoy()
     {
         try {
-            $user = $request->user();
+            $user = request()->user();
             return $user->countRegistrosAsistenciaHoy();
         } catch (ModelNotFoundException $e) {
             return response(['Error' => 'Coder no existe'], 404);

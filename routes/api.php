@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     // Asistencias
     Route::get('/listadoFirmas', [AsistenciaController::class, 'index']);
     Route::post('/firmar', [AsistenciaController::class, 'store']);
-    Route::post('/numeroFirmasHoy/{user}', [AsistenciaController::class, 'getCountRegistrosAsistenciaHoy']);
+    Route::post('/numeroFirmasHoy', [AsistenciaController::class, 'getCountRegistrosAsistenciaHoy']);
 
     // Pildoras
     Route::get('/listadoPildoras', [PildoraController::class,'index']);
